@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% comment %} 
+    list of all Persons with pagination
+    params:
+        page_obj: Page Object
+        filter_form: Form to filter
+{% endcomment %}
+
+{% block content %}
+
+    {# TODO: Filter Form #}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# Iterate over all Persons #}
+            {% for person in page_obj %}
+                <tr>
+                    <td>{{person.first_name}}</td>
+                    <td>{{person.last_name}}</td>
+                    <td>{{person.birthday}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

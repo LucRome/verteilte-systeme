@@ -16,8 +16,10 @@ Including another URLconf
 from django.urls.conf import include
 from django.contrib import admin
 from django.urls import path
+from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('birthday_db.urls'))
+    path('', homepage, name='homepage'),
+    path('/', include('birthday_db.urls')),
 ]
