@@ -17,6 +17,20 @@
             "problemMatcher": []
         },
         {
+            "label": "Run Makemigrations",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "options": {
+                "cwd": "${workspaceFolder}/src/backend"
+            },
+            "args": [
+                "manage.py",
+                "makemigrations",
+                "${input:appId}"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "Run Migrate",
             "type": "shell",
             "command": "${command:python.interpreterPath}",
@@ -28,6 +42,15 @@
                 "migrate"
             ],
             "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "appId",
+            "type": "promptString",
+            "description": "Name of the app",
+            "default": "birthday_db",
+            "password": false
         }
     ]
 }
