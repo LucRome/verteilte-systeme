@@ -26,7 +26,6 @@
             "args": [
                 "manage.py",
                 "makemigrations",
-                "${input:appId}"
             ],
             "problemMatcher": []
         },
@@ -42,15 +41,19 @@
                 "migrate"
             ],
             "problemMatcher": []
-        }
-    ],
-    "inputs": [
+        },
         {
-            "id": "appId",
-            "type": "promptString",
-            "description": "Name of the app",
-            "default": "birthday_db",
-            "password": false
+            "label": "Run Add Persons",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "options": {
+                "cwd": "${workspaceFolder}/src/backend"
+            },
+            "args": [
+                "manage.py",
+                "add_persons"
+            ],
+            "problemMatcher": []
         }
     ]
 }
