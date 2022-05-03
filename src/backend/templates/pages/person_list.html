@@ -25,6 +25,7 @@
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Birthday</th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,9 @@
                     <td>{{person.first_name}}</td>
                     <td>{{person.last_name}}</td>
                     <td>{{person.birthday}}</td>
+                    <td>
+                        <a href="{% url 'delete_person' id=person.id %}" class="btn-sm btn-danger">Delete</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

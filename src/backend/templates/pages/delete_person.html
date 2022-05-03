@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% comment %} 
+    Deleted a Person
+    params:
+        first_name: first name
+        last_name: last name
+        birthday: birthday
+{% endcomment %}
+
+{% block page_title %}Deleted Person{% endblock page_title %}
+
+{% block nav_links %}
+    <a href="{% url 'person_list' page=1 %}" class="btn btn-primary float-end">
+        List
+    </a>
+{% endblock nav_links %}
+
+{% block content %}
+    <div class="alert alert-success justify-content-evenly align-content-center">
+        <b class="align-self-center">successfully deleted {{first_name}} {{last_name}}, born on {{birthday}}</b>
+    </div>
+    <a href="{% url 'person_list' page=1 %}" class="btn btn-primary">
+        Return
+    </a>
+{% endblock content %}

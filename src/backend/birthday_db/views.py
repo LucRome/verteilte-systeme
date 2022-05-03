@@ -1,5 +1,5 @@
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 from .utils import get_value
 from .forms import PersonFilterForm, PersonForm
@@ -47,3 +47,18 @@ def new_person(request: HttpRequest):
     }
 
     return render(request, 'pages/create_person.html', context)
+
+def delete_person(request: HttpRequest, id):
+    person_to_delete = get_object_or_404(Person, pk=id)
+    first_name = person_to_delete.first_name
+    last_name = person_to_delete.last_name
+    birthday = person_to_delete.birthday
+    person_to_delete.delete()
+
+    context =  {
+        'first_name': first_name,
+        'last_name': last_name,
+        'birthday': birthday
+    }
+
+    return render(request, 'pages/delete_person.html', context)
