@@ -36,6 +36,7 @@
                     <td>{{person.last_name}}</td>
                     <td>{{person.birthday}}</td>
                     <td>
+                        <a href="{% url 'edit_person' id=person.id %}" class="btn-sm btn-primary">Edit</a>
                         <a href="{% url 'delete_person' id=person.id %}" class="btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>

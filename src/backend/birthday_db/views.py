@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
@@ -62,3 +63,24 @@ def delete_person(request: HttpRequest, id):
     }
 
     return render(request, 'pages/delete_person.html', context)
+
+def edit_person(request: HttpRequest, id):
+    update_success = False
+    if request.method == 'POST':
+        person_obj = get_object_or_404(Person, pk=id)
+        form = PersonForm(request.POST or None, instance=person_obj)
+        if form.is_valid():
+            form.save()
+            update_success = True
+    
+    else:
+        person_obj = get_object_or_404(Person, pk=id)
+        form = PersonForm(model_to_dict(person_obj))
+
+    context = {
+        'form': form,
+        'person_id': person_obj.id,
+        'update_success': update_success
+    }
+
+    return render(request, 'pages/edit_person.html', context)
