@@ -10,7 +10,7 @@
 {% block page_title %}Person List{% endblock page_title %}
 
 {% block nav_links %}
-    <a href="{% url 'new_person' %}" class="btn btn-primary">
+    <a href="{% url 'new_person' %}" class="btn btn-primary float-end">
         Create New
     </a>
 {% endblock nav_links %}
@@ -19,7 +19,7 @@
 
     {% include 'components/form.html' with form=filter_form method="post" msg="Filter" %}
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Firstname</th>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% comment %} 
+    Create a Person
+    params:
+        success: Save successfull
+        form: Person Form
+{% endcomment %}
+
+{% block page_title %}Create Person{% endblock page_title %}
+
+{% block nav_links %}
+    <a href="{% url 'person_list' page=1 %}" class="btn btn-primary float-end">
+        List
+    </a>
+{% endblock nav_links %}
+
+{% block content %}
+    {# success message #}
+    {% if success %}
+        <div class="alert alert-success justify-content-evenly align-content-center">
+            <b class="align-self-center">Save successfull</b>
+        </div>
+    {% endif %}
+
+    {% include 'components/form.html' with form=form method="post" msg="Create" %}
+{% endblock content %}
