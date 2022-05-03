@@ -9,6 +9,12 @@
 
 {% block page_title %}Person List{% endblock page_title %}
 
+{% block nav_links %}
+    <a href="{% url 'new_person' %}" class="btn btn-primary">
+        Create New
+    </a>
+{% endblock nav_links %}
+
 {% block content %}
 
     {% include 'components/form.html' with form=filter_form method="post" msg="Filter" %}
@@ -32,4 +38,6 @@
             {% endfor %}
         </tbody>
     </table>
+
+    {% include 'components/pagination.html' with page_obj=page_obj url_name='person_list' %}
 {% endblock content %}
