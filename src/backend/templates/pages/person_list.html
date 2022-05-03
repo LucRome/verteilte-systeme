@@ -7,9 +7,11 @@
         filter_form: Form to filter
 {% endcomment %}
 
+{% block page_title %}Person List{% endblock page_title %}
+
 {% block content %}
 
-    {# TODO: Filter Form #}
+    {% include 'components/form.html' with form=filter_form method="post" msg="Filter" %}
 
     <table class="table table-striped">
         <thead>

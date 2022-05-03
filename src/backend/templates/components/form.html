@@ -1,0 +1,65 @@
+{% comment %} 
+    A template to show Forms that process text-input
+    Uses app widget_tweaks to improve the design of the forms
+
+    params:
+        form: Form object
+        method: Form method
+        msg: button Message
+{% endcomment %}
+
+{% load widget_tweaks%}
+
+<form method="{{method}}">
+    {% csrf_token %}
+
+    {# general error messages #}
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger alert-dismissible d-flex flex-wrap align-content-center align">
+                <b>Error: </b>
+                <p class="mt-0 mb-0 ml-md-2 align-self-center">
+                    {{ error }}
+                </p>
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {# input fields of the form #}
+    <table class="table table-borderless">
+        {% for field in form.visible_fields %}
+            <tr>
+                {# Label #}
+                <td style="width: 0;">
+                    {{field.label_tag}}
+                </td>
+                <td>
+                    {# Input field #}
+                    {% if form.is_bound and field.errors %}
+                        {# field with errors in prev. input #}
+                        {% include 'components/forms_utils/field.html' with field=field error_class="is-invalid" %}
+                        {% for error in field.errors %}
+                            <div class="invalid-feedback">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {# field without errors in prv. input #}
+                        {% include 'components/forms_utils/field.html' with field=field error_class="" %}
+                    {% endif %}
+                    {# Help-text to the field #}
+                    {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <button class="btn btn-primary" type="submit">
+        {{ msg }}
+    </button>
+</form>

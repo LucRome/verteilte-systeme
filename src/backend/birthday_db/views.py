@@ -13,8 +13,8 @@ def person_list(request: HttpRequest, page=1):
         filter = PersonFilterForm(request.POST)
         if filter.is_valid():
             persons = Person.objects.filter(
-                first_name__contains=get_value(filter, 'first_name'),
-                last_name__contains=get_value(filter, 'last_name')
+                first_name__startswith=get_value(filter, 'first_name'),
+                last_name__startswith=get_value(filter, 'last_name')
             )
     else:
         filter = PersonFilterForm()
