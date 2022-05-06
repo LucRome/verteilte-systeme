@@ -16,10 +16,10 @@ def person_list(request: HttpRequest, page=1):
             persons = Person.objects.filter(
                 first_name__startswith=get_value(filter, 'first_name'),
                 last_name__startswith=get_value(filter, 'last_name')
-            )
+            ).order_by('last_name')
     else:
         filter = PersonFilterForm()
-        persons = Person.objects.all()
+        persons = Person.objects.all().order_by('last_name')
     
     paginator = Paginator(persons, ELEMENTS_PER_SITE)
     page_obj = paginator.get_page(page)

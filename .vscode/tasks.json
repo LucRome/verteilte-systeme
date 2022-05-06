@@ -26,6 +26,7 @@
             "args": [
                 "manage.py",
                 "makemigrations",
+                "birthday_db",
             ],
             "problemMatcher": []
         },
