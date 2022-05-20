@@ -15,7 +15,7 @@ Repository für die Studienarbeit zum Thema Sudoku-Helper
 # Running the App
 - Requirements: Visual-Studio-Code (mit Python-Plugin)
 
-- Open Folder `Verteilte-Systeme` in VSCode
+- Open this Folder in VSCode
 - Most times the VSCode Tasks can be used
     - Before being able to use them:
         - `F1` -> `Python: Select interpreter` -> Select the interpreter from the virtual Environment
