@@ -1,5 +1,4 @@
 # Geburtstags-Namens-Datenbank
-Repository für die Studienarbeit zum Thema Sudoku-Helper
 
 # Setup
 - Go to `src` folder and run:
